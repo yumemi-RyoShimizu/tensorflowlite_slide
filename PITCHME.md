@@ -13,7 +13,7 @@
 そのような場合、モデルをモバイルデバイス向けに最適化する手法があるため
 アプリエンジニアも知っておいた方がより良い。
 
-
+---
 
 ### そもそもTensorFlowって?
 
@@ -27,7 +27,7 @@ PyTorchと呼ばれるプラットフォームも最近はアツいが、
 
 ![google-trend-DLframework](/Users/r_shimizu/yumemiapk/google-trend-DLframework.png)
 
-
+---
 
 ### じゃあ、TensorFlowLiteって?
 
@@ -38,13 +38,13 @@ Android、iOSなど様々なデバイスで実行可能。
 モデル変換を行うと、ファイルサイズの縮小、精度に影響を与えない最適化が導入される。
 それにより、モデルロード時間と推論に掛かる時間が短くなる。
 
-
+---
 
 ### ファイルサイズの縮小、最適化って何をしてるの?
 
 何をするかは実際に変換を行うML開発者が決めるが、量子化を行うのが一般的
 
-
+---
 
 ### 量子化って?
 
@@ -52,7 +52,7 @@ Android、iOSなど様々なデバイスで実行可能。
 それにより、モデルのサイズと推論に必要な時間を減らすことが出来る。
 精度の低下はごくわずか。
 
-
+---
 
 ### 量子化の効果ってどれくらいあるの?
 
@@ -71,7 +71,7 @@ MobileNet V1はモバイル向けに考案されたアーキテクチャで、
 
 ![chart](/Users/r_shimizu/yumemiapk/chart.png)
 
-
+---
 
 ### 変換はアプリエンジニアが行うの?
 
@@ -92,7 +92,7 @@ tflite_quantized_model = converter.convert()
 open("converted_model.tflite", "wb").write(tflite_quantized_model)
 ```
 
-
+---
 
 ### アプリエンジニアは何するの?
 
@@ -106,7 +106,7 @@ https://github.com/tensorflow/examples/tree/master/lite/examples/image_classific
 
 上記URLがAndroid上で画像識別モデルを動作させる際のサンプルコード(Java😇)
 
-
+---
 
 ### 重要なところを見ていく
 
@@ -116,7 +116,7 @@ https://github.com/tensorflow/examples/tree/master/lite/examples/image_classific
 implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
 ```
 
-
+---
 
 #### モデルファイルとラベルファイルの配置
 ![スクリーンショット 2020-11-26 22.03.20](/Users/r_shimizu/yumemiapk/スクリーンショット 2020-11-26 22.03.20.png)
@@ -135,7 +135,7 @@ MappedByteBuffer tfliteModel = FileUtil.loadMappedFile(activity, "mobilenet_v1_1
 ```java
 labels = FileUtil.loadLabels(activity, "labels.txt");
 ```
-
+---
 #### Interpreterの生成
 
 ```java
@@ -154,7 +154,7 @@ tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rew
 run()で推論を実施できる。
 inputImageBufferは学習した際に使用した画像と同じサイズにリサイズした画像のバッファ。TensorImageクラス。
 outputProbabilityBufferは結果を出力する用のバッファ。TensorBufferクラス。
-
+---
 #### 推論結果を取得
 
 ```java
@@ -163,11 +163,11 @@ Map<String, Float> labeledProbability = new TensorLabel(labels, probabilityProce
 ```
 
 ラベルと確率のマップに変換出来る
-
+---
 #### サンプルアプリだとこんな感じ
 
 <img src="/Users/r_shimizu/yumemiapk/Screenshot_20201111-095910.png" alt="Screenshot_20201111-095910" style="zoom:20%;" />
-
+---
 #### まとめ
 
 個人的にオンデバイスでモデルを動作させるのはAIの知識が0の状態ではまだ簡単では無い。
