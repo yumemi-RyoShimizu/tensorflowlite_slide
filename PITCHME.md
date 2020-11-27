@@ -5,7 +5,7 @@
 ### 何でアプリ開発者が知ってないといけない?
 
 最近はオンデバイスでAIを実行する機会が多い。
-![vision (1)](/Users/r_shimizu/yumemiapk/tensorflowlite_slide/vision (1).png)
+![alt](vision (1).png)
 
 
 大抵はライブラリを使用することとなるが、独自モデル(モデルというのはAIの脳みそ)のプロダクトも?
