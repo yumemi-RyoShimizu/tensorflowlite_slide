@@ -26,7 +26,7 @@ TensorFlowをより使いやすくしたKerasと呼ばれるラッパーも存�
 PyTorchと呼ばれるプラットフォームも最近はアツいが、
 モバイル向けに組み込むとなるとGoogle製のTensorFlow、Kerasを選択する場合が多い。
 
-![google-trend-DLframework](/Users/r_shimizu/yumemiapk/tensorflowlite_slide/google-trend-DLframework.png)
+![google-trend-DLframework](assets/img/google-trend-DLframework.png)
 
 ---
 
