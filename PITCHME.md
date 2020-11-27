@@ -5,7 +5,8 @@
 ### 何でアプリ開発者が知ってないといけない?
 
 最近はオンデバイスでAIを実行する機会が多い。
-![vision (1)](/Users/r_shimizu/yumemiapk/vision (1).png)
+![vision (1)](/Users/r_shimizu/yumemiapk/tensorflowlite_slide/vision (1).png)
+
 
 大抵はライブラリを使用することとなるが、独自モデル(モデルというのはAIの脳みそ)のプロダクトも?
 モデルのパフォーマンスが悪い場合、アプリとしてもっさりしてしまうこともしばしば・・・。
@@ -25,7 +26,7 @@ TensorFlowをより使いやすくしたKerasと呼ばれるラッパーも存�
 PyTorchと呼ばれるプラットフォームも最近はアツいが、
 モバイル向けに組み込むとなるとGoogle製のTensorFlow、Kerasを選択する場合が多い。
 
-![google-trend-DLframework](/Users/r_shimizu/yumemiapk/google-trend-DLframework.png)
+![google-trend-DLframework](/Users/r_shimizu/yumemiapk/tensorflowlite_slide/google-trend-DLframework.png)
 
 ---
 
@@ -69,7 +70,7 @@ Android、iOSなど様々なデバイスで実行可能。
 MobileNet V1はモバイル向けに考案されたアーキテクチャで、
 現在はV3まで存在するため、より高速になっている。
 
-![chart](/Users/r_shimizu/yumemiapk/chart.png)
+![chart](/Users/r_shimizu/yumemiapk/tensorflowlite_slide/chart.png)
 
 ---
 
@@ -119,7 +120,7 @@ implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
 ---
 
 #### モデルファイルとラベルファイルの配置
-![スクリーンショット 2020-11-26 22.03.20](/Users/r_shimizu/yumemiapk/スクリーンショット 2020-11-26 22.03.20.png)
+![スクリーンショット 2020-11-26 22.03.20](/Users/r_shimizu/yumemiapk/tensorflowlite_slide/スクリーンショット 2020-11-26 22.03.20.png)
 
 Mobilenet_v1_1.0_224_quant.tfliteが量子化したモデルファイルで、
 labels.txtがラベルファイル(識別したい物が記載されているファイル)となる。
@@ -154,7 +155,9 @@ tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rew
 run()で推論を実施できる。
 inputImageBufferは学習した際に使用した画像と同じサイズにリサイズした画像のバッファ。TensorImageクラス。
 outputProbabilityBufferは結果を出力する用のバッファ。TensorBufferクラス。
+
 ---
+
 #### 推論結果を取得
 
 ```java
@@ -162,12 +165,16 @@ Map<String, Float> labeledProbability = new TensorLabel(labels, probabilityProce
             .getMapWithFloatValue();
 ```
 
-ラベルと確率のマップに変換出来る
+ラベルと確率のマップの変換できる。
+
 ---
+
 #### サンプルアプリだとこんな感じ
 
-<img src="/Users/r_shimizu/yumemiapk/Screenshot_20201111-095910.png" alt="Screenshot_20201111-095910" style="zoom:20%;" />
+<img src="/Users/r_shimizu/yumemiapk/tensorflowlite_slide/Screenshot_20201111-095910.png" alt="Screenshot_20201111-095910" style="zoom:25%;" />
+
 ---
+
 #### まとめ
 
 個人的にオンデバイスでモデルを動作させるのはAIの知識が0の状態ではまだ簡単では無い。
